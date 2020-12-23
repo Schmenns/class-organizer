@@ -1,13 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap');
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-family: 'Quicksand', sans-serif;
   margin: 0px;
   background-color: #08f;
   overflow: hidden;
-  font-family: 'Quicksand', sans-serif;
   text-align: center;
+  user-select: none;
 }
+br { user-select: none; }
 
 #class-container {
   width: 100%;
@@ -24,7 +25,6 @@ body {
   margin: 20px;
   padding-bottom: 16px;
   transition: .3s ease-out;
-  user-select: none;
 }
 .class:hover { transform: scale(1.1); cursor: pointer; }
 .class img { width: 80px; }
@@ -35,8 +35,7 @@ body {
 ::-webkit-scrollbar-thumb:hover { background: #666; }
 ::-webkit-scrollbar-thumb:active { background: #444; }
 
-/* USE AN H1 OR SOMETHING */
-button {
+#class-add {
   border: none;
   background-color: #fff;
   padding: 15px 32px;
@@ -48,6 +47,66 @@ button {
   transition: .3s ease-out;
   margin-top: 20px;
 }
-button:focus { outline:0; }
+*:focus { outline: none; }
 button:hover { transform: scale(1.1); }
 
+#ask-container {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100vh;
+  z-index: 999;
+}
+#ask-subcontainer {
+  position: absolute;
+  /* top and left puts the top left corner in the middle */
+  top: 50%; 
+  left: 50%;
+  /* transform moves it 50% of its width left and 50% of its height up so its centered */
+  transform: translate( -50%, -50% );
+  text-align: center;
+
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 15px; 
+}
+#ask-background {
+  background-color: #fff;
+  opacity: 0.7;
+  width: 100%;
+  height: 100%;
+}
+#ask-text { 
+  user-select: none;
+  margin: 0px;
+  padding-bottom: 10px;
+}
+#ask-input {
+  border-color: black;
+  border-radius: 5px;
+  font-family: 'Quicksand', sans-serif;
+}
+#ask-image-input-label {
+  background-color: #fff;
+  border-color: #000;
+  font-weight: bold;
+  
+  font-size: 16px;
+  margin-top: 5px;
+  border-radius: 5px;
+  font-family: 'Quicksand', sans-serif;
+  transition: .3s ease-out;
+}
+#ask-submit {
+  background-color: #fff;
+  border-color: #000;
+  font-weight: bold;
+  padding: 10px 20px;
+  margin-top: 12px;
+  
+  font-size: 16px;
+  border-radius: 10px;
+  font-family: 'Quicksand', sans-serif;
+  transition: .3s ease-out;
+}
