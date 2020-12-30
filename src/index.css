@@ -36,7 +36,6 @@ br { user-select: none; }
 ::-webkit-scrollbar-thumb:active { background: #444; }
 
 #class-add {
-  border: none;
   background-color: #fff;
   padding: 15px 32px;
   text-align: center;
@@ -46,9 +45,12 @@ br { user-select: none; }
   font-family: 'Quicksand', sans-serif;
   transition: .3s ease-out;
   margin-top: 20px;
+  cursor: pointer;
 }
 *:focus { outline: none; }
 button:hover { transform: scale(1.1); }
+label:hover { transform: scale(1.1); }
+button { border: 2pt solid #3c3c3c }
 
 #ask-container {
   position: absolute;
@@ -60,16 +62,16 @@ button:hover { transform: scale(1.1); }
 }
 #ask-subcontainer {
   position: absolute;
-  /* top and left puts the top left corner in the middle */
-  top: 50%; 
-  left: 50%;
-  /* transform moves it 50% of its width left and 50% of its height up so its centered */
-  transform: translate( -50%, -50% );
+  top: 50%; /* Puts the top side in the middle */
+  left: 50%; /* Puts the left side in the middle */
+  transform: translate( -50%, -50% ); /* transform moves it 50% of its width left and 50% of its height up so its centered */
   text-align: center;
-
   padding: 20px;
   background-color: #fff;
+  border: 2pt solid #000;
   border-radius: 15px; 
+  font-weight: bold;
+  font-size: 16px;
 }
 #ask-background {
   background-color: #fff;
@@ -83,30 +85,31 @@ button:hover { transform: scale(1.1); }
   padding-bottom: 10px;
 }
 #ask-input {
-  border-color: black;
+  border-color: #000;
   border-radius: 5px;
   font-family: 'Quicksand', sans-serif;
+  margin-bottom: 12px;
 }
 #ask-image-input-label {
-  background-color: #fff;
-  border-color: #000;
-  font-weight: bold;
-  
-  font-size: 16px;
-  margin-top: 5px;
-  border-radius: 5px;
   font-family: 'Quicksand', sans-serif;
+  background-color: #e0e0e0;
+  font-size: 16px;
+  padding: 5px;
+  border: 2px solid #000;
+  border-radius: 5px;
+  cursor: pointer;
   transition: .3s ease-out;
 }
+#ask-image-input-label:hover { background-color: #c3c3c3; }
 #ask-submit {
   background-color: #fff;
-  border-color: #000;
-  font-weight: bold;
+  border: 2px solid #000;
   padding: 10px 20px;
   margin-top: 12px;
-  
+  font-weight: bold;
   font-size: 16px;
   border-radius: 10px;
   font-family: 'Quicksand', sans-serif;
   transition: .3s ease-out;
+  cursor: pointer;
 }

@@ -1,70 +1,36 @@
 const { BrowserWindowProxy } = require('electron');
 const electron = require('electron');
 
-const addClass = document.querySelector('#class-add');
-
-class Class {
-  constructor(subject, url) {
-    this.subject = subject;
-    this.url = url;
-
-    Class.classes.push(this);
-  }
-}
-
 let classes = [
   { label: 'English', url: 'https://meet.google.com/hsq-jqob-nmu' },
 ];
 
-const ask = question => {
-  const container = Object.assign(document.createElement('div'), { id: 'ask-container' });
-  const subcontainer = Object.assign(document.createElement('div'), { id: 'ask-subcontainer' });
-  const background = Object.assign(document.createElement('div'), { id: 'ask-background' });
-
-  const text = Object.assign(document.createElement('h3'), { id: 'ask-text', innerText: question });
-  const input = Object.assign(document.createElement('input'), { id: 'ask-input' });
-
-  const imageInput = Object.assign(document.createElement('input'), { id: 'ask-image-input', type: 'file' });
-  const imageInputLabel = Object.assign(document.createElement('label'), { id: 'ask-image-input-label', for: 'ask-image-input' });
-  imageInputLabel.onclick = () => imageInput.click();
-
-  const submit = Object.assign(document.createElement('button'), { id: 'ask-submit', innerText: 'Submit' })
-
-  subcontainer.append(text, input, document.createElement('br'), imageInputLabel, document.createElement('br'), submit);
-  container.append(background, subcontainer);
-
-  document.body.append(container);
+window.onload = loadClasses = () => {
+  const container = document.querySelector('#class-container'); // Bar on top where the classes are
+  while(container.children.length > 0) container.children[0].remove();
   
-  submit.onclick = () => {
-    console.log('eodgijkm')
-    container.remove();
-  }
-}
-
-window.onload = () => {
-  const container = document.querySelector('#class-container');
-  classes.forEach(c => {
+  classes.forEach(c => { // Makes a button for each class in the classes list
     const subcontainer = document.createElement('div');
     subcontainer.classList.add('class');
 
-    const label = document.createElement('span');
+    const label = document.createElement('span'); // The text for what the class is called
     label.innerText = c.label;
 
-    const image = document.createElement('img');
+    const image = document.createElement('img'); // The image for the class
     image.src = 'Images/laptop.png';
     image.draggable = false;
 
     subcontainer.append(image, document.createElement('br'), label);
     container.append(subcontainer);
 
-    subcontainer.onclick = () => electron.ipcRenderer.send('load-url', c.url); // Runs the code to change the url in index.js                                                                  
+    subcontainer.onclick = () => electron.ipcRenderer.send('load-url', c.url); // Runs the code to change the url in index.js
   });
 };
 
-
+const addClass = document.querySelector('#class-add'); // Add Class Button
 addClass.onclick = () => {
-  ask('What is the class called?')
-  document.querySelector('#ask-submit').onclick = () => {
-    document.querySelector('#ask-container').remove;
-  }
+  ask('What is the class called?', (name, file) => {
+    classes.push({ label: name, url: 'https://meet.google.com/hsq-jqob-nmu' });
+    loadClasses();
+  });
 }
