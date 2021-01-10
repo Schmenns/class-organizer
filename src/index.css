@@ -27,7 +27,7 @@ br { user-select: none; }
   transition: .3s ease-out;
 }
 .class:hover { transform: scale(1.1); cursor: pointer; }
-.class img { width: 80px; }
+.class img { width: 70px; }
 
 ::-webkit-scrollbar { width: 10px; height: 15px; }
 ::-webkit-scrollbar-button { width: 0px; height: 0px; }
@@ -48,8 +48,6 @@ br { user-select: none; }
   cursor: pointer;
 }
 *:focus { outline: none; }
-button:hover { transform: scale(1.1); }
-label:hover { transform: scale(1.1); }
 button { border: 2pt solid #3c3c3c }
 
 #ask-container {
@@ -58,7 +56,6 @@ button { border: 2pt solid #3c3c3c }
   top: 0px;
   width: 100%;
   height: 100vh;
-  z-index: 999;
 }
 #ask-subcontainer {
   position: absolute;
@@ -66,13 +63,15 @@ button { border: 2pt solid #3c3c3c }
   left: 50%; /* Puts the left side in the middle */
   transform: translate( -50%, -50% ); /* transform moves it 50% of its width left and 50% of its height up so its centered */
   text-align: center;
-  padding: 20px;
+  padding: 15px;
+  padding-top: 11px;
   background-color: #fff;
-  border: 2pt solid #000;
+  border: 2pt solid #000; /* What the heck is a pt */
   border-radius: 15px; 
   font-weight: bold;
   font-size: 16px;
 }
+#ask-subcontainer-relative { position: relative; }
 #ask-background {
   background-color: #fff;
   opacity: 0.7;
@@ -82,21 +81,26 @@ button { border: 2pt solid #3c3c3c }
 #ask-text { 
   user-select: none;
   margin: 0px;
-  padding-bottom: 10px;
+  margin-bottom: 8px;
+  margin-top: -1px;
 }
-#ask-input {
+input {
+  font-family: 'Quicksand', sans-serif;
   border-color: #000;
   border-radius: 5px;
-  font-family: 'Quicksand', sans-serif;
+  padding: 6px;
   margin-bottom: 12px;
+  font-size: 15px;
+  font-weight: bold;
 }
+#ask-input-name { margin-right: 5px; }
 #ask-image-input-label {
   font-family: 'Quicksand', sans-serif;
   background-color: #e0e0e0;
   font-size: 16px;
   padding: 5px;
   border: 2px solid #000;
-  border-radius: 5px;
+  border-radius: 10px;
   cursor: pointer;
   transition: .3s ease-out;
 }
@@ -113,3 +117,18 @@ button { border: 2pt solid #3c3c3c }
   transition: .3s ease-out;
   cursor: pointer;
 }
+#ask-cancel {
+  position: absolute;
+  top: 0px; right: 0px;
+  font-size: 30px;
+  color: #d80000;
+  background-color: transparent;
+  border: none;
+  font-family: 'Quicksand', sans-serif;
+  cursor: pointer;
+  transition: .3s ease-out;
+  float: right;
+  margin-top: -10px;
+  margin-right: -6px;
+}
+#ask-cancel:hover { color: #af0000; }

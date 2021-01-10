@@ -2,7 +2,7 @@ const { BrowserWindowProxy } = require('electron');
 const electron = require('electron');
 
 let classes = [
-  { label: 'English', url: 'https://meet.google.com/hsq-jqob-nmu' },
+  { label: 'English', url: 'meet.google.com/hsq-jqob-nmu' },
 ];
 
 window.onload = loadClasses = () => {
@@ -17,7 +17,8 @@ window.onload = loadClasses = () => {
     label.innerText = c.label;
 
     const image = document.createElement('img'); // The image for the class
-    image.src = 'Images/laptop.png';
+    image.classList.add('class-image');
+    image.src = c.image ? c.image : 'Images/laptop.png';
     image.draggable = false;
 
     subcontainer.append(image, document.createElement('br'), label);
@@ -29,8 +30,9 @@ window.onload = loadClasses = () => {
 
 const addClass = document.querySelector('#class-add'); // Add Class Button
 addClass.onclick = () => {
-  ask('What is the class called?', (name, file) => {
-    classes.push({ label: name, url: 'https://meet.google.com/hsq-jqob-nmu' });
+  ask('Create a Class', (name, image, URL) => {
+    classes.push({ label: name, image: image, url: `https://${URL.split('https://').pop().split('www.').pop()}`, });
     loadClasses();
   });
 }
+addClass.onclick();
